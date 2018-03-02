@@ -5,10 +5,13 @@ class TweetList extends React.Component{
 
   render(){
     const tweetList = this.props.tweets.map((tweet, index) => {
-      return <Tweet key = {index} tweet = {tweet}/>
+      return <Tweet key = {index}tweet = {tweet}/>
     })
-    return (<div>
-      {tweetList}
+    return (
+    <div>
+      <ul  className = "list-unstyled" >
+       {tweetList}
+      </ul>
     </div>)
   }
 };

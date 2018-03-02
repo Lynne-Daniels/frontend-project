@@ -14,7 +14,7 @@ class TweetListContainer extends React.Component{
     this.setState({tweets:data})
   }
   render(){
-    return (<div>
+    return (<div className="container-fluid">
       <TweetList tweets = {this.state.tweets} />
     </div>)
   }
