@@ -1,5 +1,6 @@
 import React from 'react';
 import TweetList from './TweetList.jsx';
+import { Media } from 'react-bootstrap';
 const data = require('./sample-data.js');
 
 class TweetListContainer extends React.Component{
@@ -8,14 +9,37 @@ class TweetListContainer extends React.Component{
   constructor(props) {
     super(props);
 
-    this.state = {tweets: []}
+    this.state = {
+      trizic: [],
+      laughingsquid: [],
+      techcrunch: []
+    }
   }
   componentDidMount(){
-    this.setState({tweets:data})
+    this.setState({
+      trizic: data.trizic,
+      laughingsquid: data.laughingsquid,
+      techcrunch: data.techcrunch
+    })
   }
   render(){
-    return (<div className="container-fluid">
-      <TweetList tweets = {this.state.tweets} />
+    console.log(Object.entries(this.state).map(([key, val]) => {
+      return key
+    }));
+    const tweetListWithHeader = Object.entries(this.state).map(([key, val]) => {
+       return ( 
+       <div className="col-sm">
+          {/* <TweetList laughingsquid = {this.state.laughingsquid} /> */}
+          {console.log('key is: ', key, this.state[key])}
+          <TweetList tweets = {this.state[key]} tweeter = {key} />
+        </div>
+        )
+    });
+    return (
+    <div className="container-fluid">
+      <div className="row">
+        {tweetListWithHeader}
+      </div>
     </div>)
   }
 }

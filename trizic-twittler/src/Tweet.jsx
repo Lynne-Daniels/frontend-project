@@ -1,5 +1,6 @@
 import React from 'react';
 import twitterLogo from './Twitter_Logo_Blue.svg';
+import { Media } from 'react-bootstrap';
 
 class Tweet extends React.Component{
     render() {

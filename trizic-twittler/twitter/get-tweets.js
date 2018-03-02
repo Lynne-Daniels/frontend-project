@@ -23,7 +23,9 @@ const fetchTweets = (twitterHandle, cb) => {
 //   console.log(tweets);
 // });
 
-fetchTweets('laughingsquid', (error, tweets, res) => {
+
+
+fetchTweets('techcrunch', (error, tweets, res) => {
   if (error) {console.log(error);}
   console.log(tweets);
 })
