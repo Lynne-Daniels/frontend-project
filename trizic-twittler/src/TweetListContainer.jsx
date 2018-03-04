@@ -1,11 +1,10 @@
 import React from 'react';
 import TweetList from './TweetList.jsx';
-import { Media } from 'react-bootstrap';
-const data = require('./sample-data.js');
+//const data = require('./sample-data.js'); // used for static test data only
+
 
 class TweetListContainer extends React.Component{
-  //TODO - after figuring out a server to make the api call, initialize with empty strings
-  // and setState with data from api call on componentDidMount
+
   constructor(props) {
     super(props);
 
@@ -13,24 +12,41 @@ class TweetListContainer extends React.Component{
       trizic: [],
       laughingsquid: [],
       techcrunch: []
-    }
+    };
+    this.getTweets = this.getTweets.bind(this);
   }
-  componentDidMount(){
-    this.setState({
-      trizic: data.trizic,
-      laughingsquid: data.laughingsquid,
-      techcrunch: data.techcrunch
+  getTweets (twitterAccount) {
+    let url = `http://localhost:3002/tweets?id=${twitterAccount}`
+    console.log(url);
+    fetch(url) // was 'http://localhost:3002/tweets?id=laughingsquid'
+    .then((response) => {
+      //console.log('in herer now ', response, JSON.parse(response));
+      //console.log(response.json());
+      return(response.json());
+    })
+    .then((myJson) => {
+      //console.log('Here is what I have: ', myJson)
+      this.setState({[twitterAccount]: myJson})
+    })  
+    .catch((error) => {
+      console.log('Here is a fetching error: ', error)
     })
   }
+
+  componentDidMount(){
+
+    const twitterAccounts = Object.keys(this.state);
+    console.log('twitter accouts are: ', twitterAccounts)
+    for (let i = 0; i < twitterAccounts.length; i++) {
+      console.log('handle is: ', twitterAccounts[i])
+      this.getTweets(twitterAccounts[i]);
+    }
+  }
   render(){
-    console.log(Object.entries(this.state).map(([key, val]) => {
-      return key
-    }));
-    const tweetListWithHeader = Object.entries(this.state).map(([key, val]) => {
+
+    const tweetListWithHeader = Object.entries(this.state).map(([key, val], index) => {
        return ( 
-       <div className="col-sm">
-          {/* <TweetList laughingsquid = {this.state.laughingsquid} /> */}
-          {console.log('key is: ', key, this.state[key])}
+       <div className="col-sm" key={index}>
           <TweetList tweets = {this.state[key]} tweeter = {key} />
         </div>
         )

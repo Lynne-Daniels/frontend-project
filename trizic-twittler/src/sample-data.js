@@ -1,3 +1,15 @@
+/*
+Use this file for prototyping and maybe testing
+Data replicates entire response from Twitter API using:
+
+  const fetchTweets = (twitterHandle, cb) => {
+    let url = `https://api.twitter.com/1.1/search/tweets.json?q=from%3A${twitterHandle}&count=30`;
+    client.get(url, cb);
+  }
+
+Functions at the end of this file reduce the data to just what needs to be passed to the front end state
+*/
+
 const moment = require('moment');
 const techcrunch = { statuses:
 [ { created_at: 'Fri Mar 02 05:42:04 +0000 2018',
@@ -1536,43 +1548,49 @@ const laughingsquid = { statuses:
       since_id: 0,
       since_id_str: '0' } }
 
-const trizic = [];
-// TODO handle empty
+const trizic = { statuses: []};
+
+// Iterate over any of the three 
 let formatData = (arr) => {
-  if (arr.length === 0) {
-    return `This account had no tweets in the last week.`
+  if (arr.statuses.length === 0) {
+    // return `This account had no tweets in the last week.`
+    let output = [{
+      text: 'No Tweets found.  Silence.  Nothing.',
+      formattedDate: moment().format('LLLL'),
+      link: `https://twitter.com/`
+    }]
+    return output;
   }
   return arr.statuses.map((val) =>{
     let output = {
         text: val.text,
         formattedDate: moment(new Date(val.created_at)).format('LLLL'),
         //TODO refactor to take a variable for screen name
-        link: `https://twitter.com/${'laughingsquid'}/status/${val.id_str}`
+        link: `https://twitter.com/${'anyoldstringwillworkitseems'}/status/${val.id_str}`
     }
     return output;
   })
 }
 
 let feeds = {
-  trizic: trizic,
+  trizic: formatData(trizic),
   laughingsquid: formatData(laughingsquid),
   techcrunch: formatData(techcrunch),
 }
 
-let displayData = laughingsquid.statuses.map((val) =>{
-    let output = {
-        text: val.text,
-        formattedDate: moment(new Date(val.created_at)).format('LLLL'),
-        //TODO refactor to take a variable for screen name
-        link: `https://twitter.com/${'laughingsquid'}/status/${val.id_str}`
-    }
-    return output;
-})
+// let displayData = laughingsquid.statuses.map((val) =>{
+//     let output = {
+//         text: val.text,
+//         formattedDate: moment(new Date(val.created_at)).format('LLLL'),
+//         //TODO refactor to take a variable for screen name
+//         link: `https://twitter.com/${'laughingsquid'}/status/${val.id_str}`
+//     }
+//     return output;
+// })
 
 let fillFeeds = (feedObj) => {
   let keys = [];
   for (let key in feedObj) {
-    console.log(key, feeds[key]);
     keys.push(key);
   }
 }
