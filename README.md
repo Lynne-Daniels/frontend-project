@@ -1,5 +1,11 @@
 # Starting Instructions - 
 
+```git clone https://github.com/Lynne-Daniels/frontend-project.git
+$cd frontend-project
+$npm install
+
+```
+
 create a file named config.js in the twitter directory.  It needs to have the following info:
 
 ```const BEARER = {
