@@ -12,7 +12,7 @@ const client = new Twitter({
 
 const fetchTweets = (twitterHandle, cb) => {
   console.log('getting tweets for: ', twitterHandle);
-  let url = `https://api.twitter.com/1.1/search/tweets.json?q=from%3A${twitterHandle}&count=6`;
+  let url = `https://api.twitter.com/1.1/search/tweets.json?q=from%3A${twitterHandle}&count=30`;
   client.get(url, cb);
 }
 
