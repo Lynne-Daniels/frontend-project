@@ -1,9 +1,12 @@
-ul{
-  max-width: 310px;
-}
 li {
   font-family: "Neue Helvetica", Arial, Helvetica, sans-serif;
 }
 img {
   height: 64px;
+}
+
+@media screen and (min-width: 540px) {
+  .col{  /* because bootstrap fails to maintain row on safari*/
+    max-width: 33%;
+  }
 }

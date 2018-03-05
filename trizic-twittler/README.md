@@ -1,10 +1,3 @@
-To Run:
-
-rename TODO_RENAME_AS_config.js as config.js in the server directory
-obtain twitter credentials from https://apps.twitter.com/
-add these to the above file
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

@@ -1,3 +1,33 @@
+# Starting Instructions - 
+
+create a file named config.js in the twitter directory.  It needs to have the following info:
+
+```const BEARER = {
+  consumer_key: 'YOUR_KEY',
+  consumer_secret: 'YOUR_SECRET',
+  bearer_token: 'YOUR_BEARER_TOKEN'
+};```
+
+module.exports =  BEARER;
+
+
+Navigate to the project directory
+```$cd twizic-twittler```
+
+Start the backend - 
+
+```$ nodemon ./twitter/server.js localhost 3002```
+
+Start the front end.
+```$npm start```       
+
+You can now view trizic-twittler in the browser.
+ http://localhost:3000/
+
+
+
+
+# Original Instructions Follow
 # Use the Twitter API to make an @Trizic page
 
 We at Trizic are interested in making a front-end with standards-compliant,

@@ -1,7 +1,6 @@
 import React from 'react';
 import twitterLogo from './Twitter_Logo_Blue.svg';
 
-
 class Tweet extends React.Component{
     render() {
         return(

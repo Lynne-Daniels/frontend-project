@@ -10,7 +10,7 @@ class TweetList extends React.Component{
 
     return (
       <div>
-      <h4>Last week {this.props.tweeter}  said...</h4> {/* make this populate automagically */}
+      <h4>Last week {this.props.tweeter}  said...</h4>
       <ul className = "list-unstyled" >
        {tweetList}
       </ul>

@@ -16,10 +16,4 @@ const fetchTweets = (twitterHandle, cb) => {
   client.get(url, cb);
 }
 
-//  fetchTweets(twitterHandle, cb) where callback takes parameters error, tweets, server-response-code
-// uncomment below to log data to console
-// fetchTweets('techcrunch', (error, tweets, res) => {
-//   if (error) {console.log(error);}
-//   console.log(tweets);
-// })
 module.exports = fetchTweets;

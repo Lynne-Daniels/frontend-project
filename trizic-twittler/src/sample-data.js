@@ -2,11 +2,6 @@
 Use this file for prototyping and maybe testing
 Data replicates entire response from Twitter API using:
 
-  const fetchTweets = (twitterHandle, cb) => {
-    let url = `https://api.twitter.com/1.1/search/tweets.json?q=from%3A${twitterHandle}&count=30`;
-    client.get(url, cb);
-  }
-
 Functions at the end of this file reduce the data to just what needs to be passed to the front end state
 */
 
@@ -1578,16 +1573,6 @@ let feeds = {
   techcrunch: formatData(techcrunch),
 }
 
-// let displayData = laughingsquid.statuses.map((val) =>{
-//     let output = {
-//         text: val.text,
-//         formattedDate: moment(new Date(val.created_at)).format('LLLL'),
-//         //TODO refactor to take a variable for screen name
-//         link: `https://twitter.com/${'laughingsquid'}/status/${val.id_str}`
-//     }
-//     return output;
-// })
-
 let fillFeeds = (feedObj) => {
   let keys = [];
   for (let key in feedObj) {
@@ -1596,5 +1581,4 @@ let fillFeeds = (feedObj) => {
 }
 fillFeeds(feeds);
 
-// Refactor: tlcontainer will pass an object with keys. Each key name will be used to get data
 module.exports = feeds;
